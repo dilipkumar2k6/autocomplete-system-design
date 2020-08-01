@@ -1,5 +1,5 @@
 # Functional Requirement
-![](assets/autocomplete-example.png
+![](assets/autocomplete-example.png)
 # Design constraints
 - No spell check
 - No locale
