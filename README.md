@@ -51,7 +51,7 @@ https://leetcode.com/problems/design-search-autocomplete-system/
 - Store all possible nodes in prefix hash table with top `K` 
 - This will return in constant time
 ## How would we build this trie? 
-- We can efficiently build our trie bottom up. 
+- We can efficiently build our trie bottom up i.e. post order dfs traversal. 
 - Each parent node will recursively call all the child nodes to calculate their top suggestions and their counts. 
 - Parent nodes will combine top suggestions from all of their children to determine their top suggestions.
 ## How to update the trie?
@@ -59,7 +59,7 @@ https://leetcode.com/problems/design-search-autocomplete-system/
 - If we try to update our trie for every query it’ll be extremely resource intensive and this can hamper our read requests, too. 
 - One solution to handle this could be to update our trie offline after a certain interval.
     - As the new queries come in we can log them and also track their frequencies. 
-    - Either we can log every query or do sampling and log every 1000th query. 
+    - Either we can log `every` query or do `sampling` and log every 1000th query. 
     - For example, if we don’t want to show a term which is searched for less than 1000 times, it’s safe to log every 1000th searched term.
 - We can have a Map-Reduce (MR) set-up to process all the logging data periodically say every hour. 
     - These MR jobs will calculate frequencies of all searched terms in the past hour. We can then update our trie with this new data. 
